@@ -46,7 +46,7 @@ Se documentaron problemas de calidad de datos y posibles causas.
  Dos hoteles no registran reservas durante el periodo analizado. Esto podría deberse a falta de integración de datos o baja actividad operativa.
 
 *Tendencia de ingresos y crecimiento anual
- Se observa una tendencia general positiva con variaciones anuales que podrían asociarse a estacionalidad o cambios en la demanda.
+ Se observa una tendencia general positiva con variaciones anuales que podrían asociarse a estacionalidad o cambios en la demanda, Con un gran crecimiento en el año 2020 a 2021, lo cual pued ser causa de falta de datos en 2020.
 
  # Hallazgos de calidad de datos
 Durante el análisis exploratorio se identificaron diversas oportunidades de mejora en la calidad de la información, particularmente en las tablas de reservaciones y catálogos maestros. A continuación se detallan los principales hallazgos:
@@ -55,11 +55,13 @@ Datos faltantes en reservaciones canceladas: se detectó ausencia de informació
 
 Falta de captura en fechas: se observaron registros con valores no capturados en campos como fecha_registro y fecha_salida, afectando la trazabilidad completa del ciclo de reservación.
 
-Inconsistencias en tipos de datos de fecha: algunos campos presentan formatos incorrectos, lo que requirió forzar la conversión mediante errors='coerce' para su análisis.
+Inconsistencias en tipos de datos de fecha: se encontraron registros de campo fecha con un tipo de dato incorrecto.
 
-Valores negativos en tarifas: existen registros con valores negativos en campos de tarifas o ingresos. Dado que no se dispone de una columna de estatus que permita distinguir cancelaciones o ajustes contables, no fue posible inferir su naturaleza.
+Valores negativos en tarifas: existen registros con valores negativos en campos de tarifas o ingresos. Dado que no se dispone de una catalogo de estatus que permita distinguir cancelaciones o ajustes contables, no fue posible inferir su naturaleza.
 
 Duplicados en el catálogo maestro de agencias: se identificaron registros repetidos en el campo Agencia_nombre. Se decidió conservar el primer registro de cada duplicado como referencia principal.
+
+Comparando el catalogo de agnecias con la tabla de ocupaciones, hay muchos valores que no existen en el catalogo.
 
 # Recursos adicionales
 
@@ -67,6 +69,12 @@ Se desarrolló un diagrama relacional que muestra las relaciones entre los catá
 
 Se construyó un dashboard básico en Power BI que presenta las métricas de ingresos, reservas y rentabilidad por agencia, complementando el análisis realizado en Python.
 
+# Justificacion
+Se opto por no modificar ni eliminar datos como tarifas en la tabla de reservas por falta de entendimiento de los datos y ausencia de catalogos.
+
+se eliminaron registros duplicados en la tabla de agencias, ya que al considerarlo como catalogo, deben ser registros unicos.
+
+Se transformaron los tipos de datos fecha, para tener un buen tipo de dato y poder hacer calculos deseados correctamente.
 
 # Conclusiones de negocio
 
