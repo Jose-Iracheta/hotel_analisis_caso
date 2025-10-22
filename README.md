@@ -20,7 +20,9 @@ iar_Ocupaciones.parquet	               Métricas de ingresos, ADR y cuartos noch
    venv\Scripts\activate      # En Windows
 3-Instalar dependencias
    pip install -r requirements.txt
-4-Ejecutar el notebook principal:
+4- descargar archivos .parquet e ingresarlos dentro de la carpeta 'data'
+LINK: https://drive.google.com/drive/folders/1btplIKicikwEpJAJCxpCyzy6sB6n2eSs?usp=sharing
+5-Ejecutar el notebook principal:
    jupyter notebook notebooks/01_eda_y_analisis.ipynb
 
 # Etapas del proyecto
